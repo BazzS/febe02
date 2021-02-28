@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Страница INPUT</title>
+    </head>
+    <body>
+        <form action='/1/' method="POST" id='form'>
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form }}
+            </div>
+            <button type="submit" class="btn btn-success" id="button-submit">Подтвердить</button>
+        </form>
+        <script>
+           var counter = 1;
+           function add(){
+               var input = document.createElement('input');
+               var label = document.createElement('label');
+
+               input.name = 'name' + counter;
+               input.type = "text";
+               input.id = "name" + counter;
+               label.setAttribute("for","name" + counter);
+               label.innerHTML = "name" + counter + ":";
+
+               document.getElementById('form-group').appendChild(label);
+               document.getElementById('form-group').appendChild(input);
+
+               counter++;
+           }
+       </script>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+          integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+          crossorigin="anonymous"></script>
+    </body>
+</html>

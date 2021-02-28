@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Страница INPUT</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="well">Тестовое от ask</div>
+        <div class="container">
+            <form action="/" method="post" id="form">
+                {% csrf_token %}
+                <div class="form-group" id="form-group">
+                    {{ form }}
+                </div>
+                <button type="submit" class="btn btn-success" id="button-submit">SUBMIT</button>
+            </form>
+        </div>
+        </br>
+        <div class="container">
+            <button class="btn btn-default" onclick="add()">ADD INPUT</button>
+        </div>
+        <script>
+           var counter = 1;
+           function add(){
+               <!-- Создаем дополнительную форму ввода -->
+               var input = document.createElement('input');
+               <!-- Создаем подпись к данным формам -->
+               var label = document.createElement('label');
+
+               input.name = 'name' + counter;
+               input.type = "text";
+               input.id = "name" + counter;
+               label.setAttribute("for","name" + counter);
+               label.innerHTML = "name" + counter + ":";
+
+               <!-- Добавляем созданные элементы к родительскому элементу -->
+               document.getElementById('form-group').appendChild(label);
+               document.getElementById('form-group').appendChild(input);
+
+               <!--  https://coderoad.ru/5656392/Как-создать-input-type-text-динамически -->
+
+               counter++;
+           }
+       </script>
+    </body>
+</html>
